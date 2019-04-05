@@ -1,0 +1,1 @@
+ALTER TABLE wallpaper_table ADD description LONGTEXT DEFAULT NULL, ADD tags VARCHAR(255) DEFAULT NULL;

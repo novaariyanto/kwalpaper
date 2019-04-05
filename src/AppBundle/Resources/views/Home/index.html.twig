@@ -1,0 +1,186 @@
+{% extends "AppBundle::layout.html.twig" %}
+{% block body%}
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+                    <i class="material-icons">wallpaper</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Wallpaper</p>
+                     <h3 class="title">{{wallpaper_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("app_wallpaper_index")}}">Wallpaper list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="orange">
+                    <i class="material-icons">wallpaper</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Review</p>
+                     <h3 class="title">{{review_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("app_wallpaper_reviews")}}">Review list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="green">
+                    <i class="material-icons">view_list</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Category</p>
+                     <h3 class="title">{{section_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("app_section_index")}}">Category list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="green">
+                    <i class="material-icons">list_list</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">S-Category</p>
+                     <h3 class="title">{{category_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("app_section_index")}}">Category list</a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="gray">
+                    <i class="material-icons">color_lens</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Color</p>
+                     <h3 class="title">{{color_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("app_color_index")}}">Color list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="rose">
+                    <i class="material-icons">slideshow</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Slide</p>
+                     <h3 class="title">{{slide_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("app_slide_index")}}">Slide list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="red">
+                    <i class="material-icons">message</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Messages</p>
+                     <h3 class="title">{{supports_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("app_support_index")}}">Messages list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="purple">
+                    <i class="material-icons">comment</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Comments</p>
+                     <h3 class="title">{{comment_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("app_comment_index")}}">Comment list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="rose">
+                    <i class="material-icons">report</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Report</p>
+                     <h3 class="title">{{reports_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("app_report_index")}}">Report list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="green">
+                    <i class="material-icons">group</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">User</p>
+                     <h3 class="title">{{users_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">keyboard_arrow_right</i><a href="{{path("user_user_index")}}">User list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="orange">
+                   <i class="material-icons">smartphone</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Install</p>
+                     <h3 class="title">{{devices_count}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">perm_device_information</i><span> Application install</span> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock%}

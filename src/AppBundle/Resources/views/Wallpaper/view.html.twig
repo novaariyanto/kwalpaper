@@ -1,0 +1,208 @@
+{% extends "AppBundle::layout.html.twig" %}
+{% block body%}
+<div class="container-fluid">
+    <div class="row">
+       <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="rose">
+                    <i class="material-icons">wallpaper</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">{{wallpaper.title}}</h4>
+		            <img src="{{asset(wallpaper.media.link)}}" class="fileinput-preview thumbnail " id="img-preview">
+                    <h4>Description : </h4>
+                    <p>{{wallpaper.description}}</p>
+                    <h4>Tags :</h4>
+                	<p> {{wallpaper.tags}}</p>
+                    <div class="row">
+                		<div class="col-md-6">{% if wallpaper.enabled %}
+                		<i class="material-icons" style="color:green;float:left">check_circle</i> <span class="check-label">Enabled</span>
+                		{% else %}
+                		<i class="material-icons" style="color:red;float:left">cancel</i> <span class="check-label">Enabled</span>
+                		{% endif %}</div>
+
+                		<div class="col-md-6">{% if wallpaper.comment %}
+                		<i class="material-icons" style="color:green;float:left">check_circle</i>  <span class="check-label">Comments enabled</span>
+                		{% else %}
+                		<i class="material-icons" style="color:red;float:left">cancel</i>  <span class="check-label">Comments Disabled</span>
+                		{% endif %}</div>
+                	</div>
+                	<div class="row">
+                		<div class="col-md-12">
+                			<h4>Colors tags : </h4>
+                		</div>
+                		{% for color in wallpaper.colors %}
+                			<div class="col-md-3" style="padding:4px"><span class="color" style="background-color:#{{color.code}}"></span> <b style="color:#{{color.code}}"> {{color.title}} </b></div>
+                		{% endfor %}
+                	</div>
+                	<div class="row">
+                		<div class="col-md-12">
+                			<h4>Categories : </h4>
+                		</div>
+                		<div class="col-md-12" >
+	                		{% for color in wallpaper.categories %}
+	                			<span class="label label-rose " style="margin:5px;"> <b> {{color.title}} </b></span>  
+	                		{% endfor %}
+                		</div>
+                	</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card" style="margin-top: 0px;">
+                        <div class="status-bar"></div>
+                        <div class="action-bar">
+                            <a href="#" class="zmdi zmdi-star"></a>
+                            <h3 style="padding-left: 35px;margin-bottom: 0px;"><b>Rating</b></h3>
+                        </div>
+                        {% set rate  =  rating %}
+                        {% set rate_main  =  rating %}
+                        <div class="list-group lg-alt lg-even-black">
+                            <table width="100%" >
+                                <tr>
+                                    <td colspan="3" style="padding: 15px;">
+                                        <div style="float: left;">
+                                        {% for i in 1..5 %}
+                                            {% if rate >= 1 %} 
+                                                <img src="{{asset("img/star.png")}}" style="height:50px;width:50px">
+                                            {% endif %}
+                                            {% if rate >= 0.25 and  rate < 0.75 %}
+                                                <img src="{{asset("img/star_h.png")}}" style="height:50px;width:50px">
+                                            {% endif %}
+                                            {% if rate >= 0.75 and  rate < 1 %}
+                                                <img src="{{asset("img/star.png")}}" style="height:50px;width:50px">
+                                            {% endif %}
+                                            {% if rate < 0.25 %}
+                                                <img src="{{asset("img/star_e.png")}}" style="height:50px;width:50px">
+                                            {% endif %}
+                                            {% set rate  =  rate - 1 %}
+                                        {% endfor %}  
+                                        </div>
+                                        <span style="height: 50px;display: inline-block; font-size: 65pt;font-weight: bold;padding-left: 20px;">{{rate_main|number_format(1, '.', ',')}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right" style="padding: 5px;">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                    </td>
+                                    <td width="30px" align="center">{{ratings.rate_5}}</td>
+                                    <td  align="left" style="padding:10px">
+                                        <span style="display:block;height:15px;background-color:#ea1f62;width:{{values.rate_5}}%"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right" style="padding: 5px;">
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                    </td>
+                                    <td width="30px" align="center">{{ratings.rate_4}}</td>
+                                    <td  align="left" style="padding:10px">
+                                        <span style="display:block;height:15px;background-color:#ea1f62;width:{{values.rate_4}}%"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right" style="padding: 5px;">
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                    </td>
+                                    <td width="30px" align="center">{{ratings.rate_3}}</td>
+                                    <td  align="left" style="padding:10px">
+                                        <span style="display:block;height:15px;background-color:#ea1f62;width:{{values.rate_3}}%"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right" style="padding: 5px;">
+                                        
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                    </td>
+                                    <td width="30px" align="center">{{ratings.rate_2}}</td>
+                                    <td  align="left" style="padding:10px">
+                                        <span style="display:block;height:15px;background-color:#ea1f62;width:{{values.rate_2}}%"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%" align="right" style="padding: 5px;">
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star_e.png")}}" style="height:30px;width:30px">
+                                        <img src="{{asset("img/star.png")}}" style="height:30px;width:30px">
+                                    </td>
+                                    <td width="30px" align="center">{{ratings.rate_1}}</td>
+                                    <td  align="left" style="padding:10px">
+                                        <span style="display:block;height:15px;background-color:#ea1f62;width:{{values.rate_1}}%"></span>
+                                    </td>
+                                </tr>
+                            </table>        
+                        </div>
+                    </div>
+                </div>
+            
+            {% for comment in wallpaper.comments %}
+				<div class="col-md-6">
+                    <ul class="timeline timeline-simple">
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge danger">
+                                <img src="{{comment.user.image}}" class="img-profile">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                               		<a href="{{path("user_user_edit",{id:comment.user.id})}}" title="">
+                                    	<span class="label label-danger">{{comment.user.name}}</span>
+                                	</a>
+                                	<span class="pull-right" >
+				                        <a href="{{path("app_comment_delete",{id:comment.id,"wallpaper":"true"})}}"  rel="tooltip" data-placement="bottom" title="" data-original-title="Delete">
+				                            <i class="material-icons" style="color:red">delete</i>
+				                        </a>
+				                        {% if comment.enabled %}
+					                        <a href="{{path("app_comment_hide",{id:comment.id})}}"  rel="tooltip" data-placement="bottom" title="" data-original-title="Hide">
+					                             <i class="material-icons">visibility_off</i>
+					                        </a>
+				                        {% else %}				                        
+					                        <a href="{{path("app_comment_hide",{id:comment.id})}}"  rel="tooltip" data-placement="bottom" title="" data-original-title="Show">
+					                             <i class="material-icons">remove_red_eye</i>
+					                        </a>
+				                        {% endif %}
+				                    </span>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>{{comment.contentclear}}</p>
+                                </div>
+                                <small class="pull-right label label-rose">
+                                     <span>{{comment.created|ago}}</span>
+                                </small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                {% else %}
+                <div class="col-md-6" >
+					<div class="card"  style="margin-top: 0px;">
+						<div class="card-content">
+							<center><img src="{{asset("img/bg_empty.png")}}"  style="width: auto !important;" =""></center>
+							<br>
+						</div>
+					</div>
+                </div>
+				{% endfor %}
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

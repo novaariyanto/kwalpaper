@@ -1,0 +1,79 @@
+{% extends "AppBundle::layout.html.twig" %}
+{% block body%}
+<div class="container-fluid">
+		<div class="row">
+			<div class="row">
+				<div class="col-md-4">
+					<div style="padding-left: 0px;">
+						<div class="card card-stats">
+							<div class="card-header" data-background-color="rose">
+								<i class="material-icons">wallpaper</i>
+							</div>
+							<div class="card-content">
+								<p class="category">Wallpapers to review</p>
+								<h3 class="card-title">{{wallpapers_count}}</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+       		</div>
+       		</div>
+			<div class="row">
+       		{% for wallpaper in wallpapers %}
+       		<div class="col-md-4">
+	            <div class="card card-product" style="background-color:{{wallpaper.color}}" >
+	                <div class="card-image" data-header-animation="true" style="height:auto" >
+	                    <a href="">
+	                        <img class="img " style="height:auto;background-color:#fff" src="{{asset(wallpaper.media.link)|imagine_filter("wallpaper_image")}}">
+	                    </a>
+	                <div class="ripple-container"></div></div>
+	                <div class="card-content" style=" padding: 0px 0px;">
+	                    <div class="card-actions">
+	                        <a href="{{path("app_wallpaper_view",{id:wallpaper.id})}}" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="View">
+	                            <i class="material-icons">remove_red_eye</i>
+	                        </a>
+	                        <a href="{{path("app_wallpaper_review",{id:wallpaper.id})}}" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="Review">
+	                            <i class="material-icons">check_circle</i>
+	                        </a>
+	                        <a href="{{path("app_wallpaper_delete",{id:wallpaper.id})}}" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="Delete">
+	                            <i class="material-icons">close</i>
+	                        </a>
+	                    </div>
+	                </div>
+
+	                <div class="wallpaper-title" >
+	                	{{wallpaper.title}}
+	                </div>
+	                <div class="card-footer">
+                        <div class="price">
+
+                             <div class="wallpaper-logo" >
+                        	{% if wallpaper.user.image == "" %}
+                        		{{wallpaper.user.name}}
+                        	{% else %}
+                        		<img src="{{wallpaper.user.image}}" class="avatar-img" alt=""> 
+                        	{% endif %}
+                             {{wallpaper.user.name}}</div>
+                        </div>
+                        <div class="stats pull-right">
+                           <div class="wallpaper-logo" >{{wallpaper.created|ago}}</div>
+                        </div>
+                    </div>
+	            </div>
+	          </div>
+	          {% else %}
+	          <div class="card"  style="text-align: center;" >
+	          <br>
+	          <br>
+	          <img src="{{asset("img/bg_empty.png")}}"  style="width: auto !important;" ="">
+              <br>
+              <br>
+	          </div>
+            {% endfor %}
+       
+    </div>
+                  <div class=" pull-right">
+        {{ knp_pagination_render(wallpapers) }}
+      </div>
+</div>
+{% endblock%}

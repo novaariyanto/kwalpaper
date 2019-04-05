@@ -1,0 +1,105 @@
+{% extends "AppBundle::layout.html.twig" %}
+{% block body%}
+<div class="container-fluid">
+		<div class="row">
+			<div class="row">
+				<div class="col-md-4">
+					<div style="padding-left: 0px;">
+						<div class="card card-stats">
+							<div class="card-header" data-background-color="rose">
+								<i class="material-icons">wallpaper</i>
+							</div>
+							<div class="card-content">
+								<p class="category">Wallpapers</p>
+								<h3 class="card-title">{{wallpapers_count}}</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div class="col-md-4">
+	          <span class="btn btn-rose btn-lg pull-right add-button">
+	            <form method="get">
+	              <input type="text" placeholder="Wallapaper title" value="{{ app.request.query.get("q") }}" name="q" style="background: none;border: none;border-bottom: 1px solid white;">
+	              <button type="submit" style="background: none;border: none;"><i class="material-icons" style="font-size: 52px;">search</i></button>
+	            </form>
+	            <div class="ripple-container"></div></span>
+	        </div>
+			<div class="col-md-4">
+				<div class="dropdown pull-left  col-md-12">
+					<a href="#" data-toggle="dropdown" aria-expanded="false" class="btn btn-rose btn-lg pull-right add-button" title=""><i class="material-icons" style="font-size: 52px;">add_box</i> NEW WALLPAPER </a>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li>
+                            <a href="{{path("app_wallpaper_add")}}"><i class="material-icons">wallpaper</i> ONE WALLPAPER</a>
+                        </li>
+                        <li>
+                            <a href="{{path("app_wallpaper_multi")}}"><i class="material-icons">photo_library</i> MULTI WALLPAPER</a>
+                        </li>
+                    </ul>
+                </div>
+			</div>
+       		</div>
+			<div class="row">
+       		{% for wallpaper in wallpapers %}
+       		<div class="col-md-4">
+	            <div class="card card-product" style="background-color:{{wallpaper.color}}" >
+	                <div class="card-image" data-header-animation="true" style="height:auto" >
+	                    <a href="">
+	                        <img class="img " style="height:auto;background-color:#fff" src="{{asset(wallpaper.media.link)|imagine_filter("wallpaper_image")}}">
+	                    </a>
+	                <div class="ripple-container"></div></div>
+	                <div class="card-content" style=" padding: 0px 0px;">
+	                    <div class="card-actions">
+	                        <a href="{{path("app_wallpaper_view",{id:wallpaper.id})}}" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="View">
+	                            <i class="material-icons">remove_red_eye</i>
+	                        </a>
+	                        <a href="{{path("app_wallpaper_edit",{id:wallpaper.id})}}" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="Edit">
+	                            <i class="material-icons">edit</i>
+	                        </a>
+	                        <a href="{{path("app_slide_add",{id:wallpaper.id,title:wallpaper.title})}}" class="btn btn-rose btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="Set Wallpaper in slide">
+	                            <i class="material-icons">slideshow</i>
+	                        </a>
+	                        <a href="{{path("app_home_notif_wallpaper",{title:wallpaper.title,id:wallpaper.id,image:asset(wallpaper.media.link)|imagine_filter("wallpaper_image"),icon:asset(wallpaper.media.link)|imagine_filter("wallpaper_image")})}}" class="btn btn-rose btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="Notification">
+	                            <i class="material-icons">notifications_active</i>
+	                        </a>
+	                        <a href="{{path("app_wallpaper_delete",{id:wallpaper.id})}}" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="" data-original-title="Delete">
+	                            <i class="material-icons">close</i>
+	                        </a>
+	                    </div>
+	                </div>
+
+	                <div class="wallpaper-title" >
+	                	{{wallpaper.title}}
+	                </div>
+	                <div class="card-footer">
+                        <div class="price">
+
+                             <div class="wallpaper-logo" >
+                        	{% if wallpaper.user.image == "" %}
+                        		<img src="{{asset("/img/avatar.jpg")}}" class="avatar-img" alt=""> 
+                        	{% else %}
+                        		<img src="{{wallpaper.user.image}}" class="avatar-img" alt=""> 
+                        	{% endif %}
+                             {{wallpaper.user.name}}</div>
+                        </div>
+                        <div class="stats pull-right">
+                           <div class="wallpaper-logo" >{{wallpaper.created|ago}}</div>
+                        </div>
+                    </div>
+	            </div>
+	          </div>
+	          {% else %}
+	          <div class="card"  style="text-align: center;" >
+	          <br>
+	          <br>
+	          <img src="{{asset("img/bg_empty.png")}}"  style="width: auto !important;" ="">
+              <br>
+              <br>
+	          </div>
+            {% endfor %}
+       
+    </div>
+                  <div class=" pull-right">
+        {{ knp_pagination_render(wallpapers) }}
+      </div>
+</div>
+{% endblock%}

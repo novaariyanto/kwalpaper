@@ -1,0 +1,188 @@
+@media (min-width: 992px){
+    .typo-line{
+        padding-left: 140px;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .typo-line .category{
+        transform: translateY(-50%);
+        top: 50%;
+        left: 0px;
+        position: absolute;
+    }
+}
+
+#map{
+    position:relative;
+    width:100%;
+    height: calc(100% - 60px);
+    margin-top: 70px;
+}
+
+.places-buttons .btn{
+    margin-bottom: 30px
+}
+
+.space-70{
+    height: 70px;
+    display: block;
+}
+
+.sidebar .nav > li.active-pro{
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+
+.tim-row{
+    margin-bottom: 20px;
+}
+
+.tim-typo{
+    padding-left: 25%;
+    margin-bottom: 40px;
+    position: relative;
+}
+.tim-typo .tim-note{
+    bottom: 10px;
+    color: #c0c1c2;
+    display: block;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 13px;
+    left: 0;
+    margin-left: 20px;
+    position: absolute;
+    width: 260px;
+}
+.tim-row{
+    padding-top: 50px;
+}
+.tim-row h3{
+    margin-top: 0;
+}
+.fileinput-new{
+    max-width: 100% !important;
+}
+.img-selector{
+    opacity: 0px !important;
+    display: none;
+}
+.avatar{
+    position: relative;
+}
+.avatar .badge-avatar{
+        height: 25px;
+    width: 25px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.pagination span.page a,
+.pagination span.next a,
+.pagination span.last a,
+.pagination span.first a,
+.pagination span.previous a{
+    border-radius: 50px;
+    color: white; 
+    margin: 5px;
+    cursor: pointer;
+}
+.pagination span.page a,
+.pagination span.next a,
+.pagination span.last a,
+.pagination span.first a,
+.pagination span.previous a{
+    color: white;
+}
+
+.pagination span.current{
+  border: 0;
+  border-radius: 30px !important;
+  transition: all .3s;
+  padding: 0px 11px;
+  margin: 0 3px;
+  min-width: 30px;
+  height: 30px;
+  padding-left:  20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 30px;
+  color: #999999;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: transparent;
+  border:1px solid #ccc;
+  }
+.pagination{
+    display: block;
+}
+.wallpaper-title{
+    border-radius: 0px 0px 6px 6px;
+    padding: 10px;
+    color: white;
+    font-weight: 900;
+    text-align: center;
+    height: 55px;
+}
+.wallpaper-logo{
+    border-radius: 0px 0px 6px 6px;
+    padding: 0px;
+    color: white;
+    font-weight: 900;
+    text-align: center;
+}
+.avatar-img{
+      height: 25px !important;
+    width: 25px !important;
+    border-radius: 67px !important;
+}
+.color{
+
+  border: 1px solid #ccc 
+  display: inline-table;
+  height: 11px;
+  width: 30px;
+}
+.timeline > li > .timeline-badge{
+      line-height: 48px;
+}
+.timeline > li > .timeline-badge img{
+    height: 100%;
+    width: 100%;
+}
+.timeline.timeline-simple {
+    margin-top: 00px;
+    padding: 0 0 00px;
+}
+.timeline > li {
+    margin-bottom: 0px;
+    position: relative;
+}
+.timeline.timeline-simple:before {
+    left: 5%;
+    background-color: none;
+    width:0px;
+}
+.check-label{
+      height: 25px;
+    display: inline-table;
+    line-height: 25px;
+    margin-left: 10px;
+}
+.color{
+  height: 20px;
+    background-color: #C40E38;
+    width: 20px;
+    display: inline-block;
+    border-radius: 61px;
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.img-profile{
+    border-radius: 50px;
+}
